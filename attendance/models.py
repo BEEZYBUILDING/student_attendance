@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Classroom(models.Model):
-    level = models.CharField(max_length=200)
+    level = models.IntegerField()
     department = models.CharField(max_length=200)
     course = models.CharField(max_length=200)
   
@@ -10,7 +10,7 @@ class Student(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
-    matric_no = models.CharField(max_length=20, unique=True)
+    matric_no = models.IntegerField(unique=True)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)  #coonnecting the clasroom to the student, thereby one studet belongs to one clasroom
     
     
