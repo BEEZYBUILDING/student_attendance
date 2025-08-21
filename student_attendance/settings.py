@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'attendance',
+    'django_filters',
+    'drf_spectacular'
     
 ]
 
@@ -123,3 +125,35 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+
+}
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Student Attendance API',
+    'DESCRIPTION': 'An API for managing classrooms, students, and attendance records in a university setting.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+
+    # Optional extras
+    'CONTACT': {
+        'name': 'OLAJIRE',
+        'email': 'olajirefolasore@gmail.com',
+        'url': 'https://github.com/BEEZYBUILDING/attendance_app',
+    },
+    'LICENSE': {
+        'name': 'MIT License',
+    },
+}
