@@ -8,6 +8,10 @@ class ClassroomSerializer(serializers.ModelSerializer): #serializer for the clas
         fields = '__all__'
         
 class StudentSerializer(serializers.ModelSerializer):
+    """
+    Serializer for student objects.
+    Includes name, email, and associated classroom.
+    """
     class Meta:
         model = Student
         fields = '__all__'
