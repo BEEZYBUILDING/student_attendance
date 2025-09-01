@@ -88,6 +88,7 @@ WSGI_APPLICATION = 'student_attendance.wsgi.application'
 }
 
     """
+print("DATABASE_URL:", os.environ.get('DATABASE_URL'))
 DATABASES = {
     'default': dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
